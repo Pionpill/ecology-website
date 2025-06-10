@@ -1,0 +1,17 @@
+{
+  "common": {
+    "copySuccess": "复制成功",
+    "switchTheme": "切换主题",
+    "switchLang": "切换语言",
+    "sponsor": "赞助",
+    "sponsorAuthor": "赞助作者",
+    "sponsorMe": "赞助我一杯奶茶😘",
+    "sponsorThanks": "感谢你的支持",
+    "seeOnGithub": "在 Github 上查看项目",
+    "contactOnWechat": "在微信上联系我",
+    "loading": "加载中..."
+  },
+  "header": {
+    "wiki": "百科"
+  }
+}
