@@ -1,8 +1,9 @@
 {
   "common": {
+    "wechat": "微信",
+    "qq": "QQ",
+    "copyToClipboard": "复制到剪切板",
     "copySuccess": "复制成功",
-    "switchTheme": "切换主题",
-    "switchLang": "切换语言",
     "sponsor": "赞助",
     "sponsorAuthor": "赞助作者",
     "sponsorMe": "赞助我一杯奶茶😘",
@@ -12,6 +13,22 @@
     "loading": "加载中..."
   },
   "header": {
-    "wiki": "百科"
+    "navigationMenu": "导航菜单",
+    "wiki": "百科",
+    "ecologyWiki": "生态模组百科",
+    "ecologyWikiContent": "查阅模组的所有数据，即官方攻略",
+    "contact": {
+      "contactUs": "联系我们",
+      "joinUs": "加入我们",
+      "joinUsDescription": "加入锤子功夫创作交流群，在这里学习模组，交流创意，了解最新的开发进展",
+      "joinGroup": "加入交流群",
+      "contactAuthor": "联系作者",
+      "indicatePurpose": "请注明来意"
+    },
+    "starProject": "收藏项目",
+    "theme": "主题",
+    "lang": "语言",
+    "join": "加入",
+    "project": "项目"
   }
 }

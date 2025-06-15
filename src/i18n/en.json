@@ -1,8 +1,9 @@
 {
   "common": {
+    "wechat": "wechat",
+    "qq": "Tencent QQ",
+    "copyToClipboard": "Copy To Clipboard",
     "copySuccess": "copy success",
-    "switchTheme": "switch theme",
-    "switchLang": "switch language",
     "sponsor": "sponsor",
     "sponsorAuthor": "sponsor author",
     "sponsorMe": "sponsor me a coffee😘",
@@ -12,6 +13,22 @@
     "loading": "loading..."
   },
   "header": {
-    "wiki": "wiki"
+    "navigationMenu": "navigation menu",
+    "wiki": "wiki",
+    "ecologyWiki": "Ecology Addon Wiki",
+    "ecologyWikiContent": "Check all data of the module, namely the official guide",
+    "contact": {
+      "contactUs": "contact us",
+      "joinUs": "join us",
+      "joinUsDescription": "Join the HammerWorkshop Creative Exchange Group, where you can learn mods, exchange ideas, and learn about the latest development progress",
+      "joinGroup": "Join Our Group",
+      "contactAuthor": "contact author",
+      "indicatePurpose": "please indicate your purpose"
+    },
+    "starProject": "star project",
+    "theme": "theme",
+    "lang": "language",
+    "join": "join",
+    "project": "project"
   }
 }

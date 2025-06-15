@@ -1,28 +1,31 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-export type LangType = 'zh' | 'en';
+export type LangType = 'zh' | 'en'
 
 type LangStore = {
-  lang: LangType;
-  switchLang: (newLang?: LangType | 'system') => void;
+  lang: LangType
+  switchLang: (newLang?: LangType | 'system') => void
 }
 
-const getSysLang = () => navigator.language.startsWith('zh') ? 'zh' : 'en';
+const getSysLang = () => (navigator.language.startsWith('zh') ? 'zh' : 'en')
 
 const useLangStore = create<LangStore>()(
   persist(
     (set) => ({
       lang: getSysLang(),
-      switchLang: (newTheme) =>
+      switchLang: (newLang) =>
         set((state) => ({
-          lang: newTheme === 'system' ? getSysLang() : newTheme || (state.lang === 'zh' ? 'en' : 'zh'),
+          lang:
+            newLang === 'system'
+              ? getSysLang()
+              : newLang || (state.lang === 'zh' ? 'en' : 'zh'),
         })),
     }),
     {
       name: 'lang-storage',
     }
   )
-);
+)
 
-export default useLangStore;
+export default useLangStore
