@@ -10,7 +10,8 @@
     "sponsorThanks": "thank you for your support",
     "seeOnGithub": "see project on github",
     "contactOnWechat": "contact me on wechat",
-    "loading": "loading..."
+    "loading": "loading...",
+    "all": "all"
   },
   "header": {
     "navigationMenu": "navigation menu",
@@ -30,5 +31,25 @@
     "lang": "language",
     "join": "join",
     "project": "project"
+  },
+  "wiki": {
+    "biome": {
+      "name": "biome",
+      "title": "ecology biome",
+      "category": "category",
+      "tag": "tag",
+      "description": "A biome is a region in a world with distinct geographical features, flora, temperatures, humidities, and sky, water, fog, grass and foliage colors. Biomes separate every generated world into different environments, such as forests, deserts and taigas.",
+      "descriptionClick": "click to jump to the official wiki page",
+      "usage": "Click the category/tag above to display the corresponding collection, click the biome to display biome information"
+    },
+    "plant": {
+      "name": "plant"
+    },
+    "item": {
+      "name": "item"
+    },
+    "land": {
+      "name": "land"
+    }
   }
 }
