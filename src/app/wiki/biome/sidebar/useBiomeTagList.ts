@@ -16,7 +16,7 @@ const useBiomeTagList = () => {
         const label = getBiomeTagName(tag, lang)
         return {
           label,
-          key: tag + lang,
+          key: tag,
           children: BiomeModel.getByFilter({ tags: [tag] }).map((biome) => ({
             label: getBiomeName(biome.biomeId, lang),
             key: biome.biomeId,

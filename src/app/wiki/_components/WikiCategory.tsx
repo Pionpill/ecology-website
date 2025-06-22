@@ -18,6 +18,7 @@ const WikiCategory: FC = () => {
     () => [
       {
         path: '/wiki/biome',
+        defaultPath: '/wiki/biome/dashboard',
         icon: <MountainSnow />,
         title: t('wiki.biome.name'),
       },
@@ -43,15 +44,12 @@ const WikiCategory: FC = () => {
   return (
     <div className="bg-sidebar flex h-full w-14 flex-col items-center gap-1 py-4">
       {sideItems.map((item) => (
-        <Tooltip>
+        <Tooltip key={item.path}>
           <TooltipTrigger asChild>
-            <Link to={item.path}>
+            <Link to={item.defaultPath || item.path}>
               <Button
                 variant={
-                  item.path.includes(location.pathname) &&
-                  location.pathname.split('/').length >= 3
-                    ? 'default'
-                    : 'ghost'
+                  location.pathname.includes(item.path) ? 'default' : 'ghost'
                 }
                 className="size-8 cursor-pointer"
               >

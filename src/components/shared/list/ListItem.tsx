@@ -36,24 +36,23 @@ const ListItem: FC<ListItemProps> = (props) => {
   }
 
   return (
-    <div
-      className={cn('flex cursor-pointer flex-col', className)}
-      onClick={(e) => {
-        e.stopPropagation()
-        setActiveKey(listNode.key)
-        onClick?.(listNode)
-      }}
-    >
+    <div className={cn('flex cursor-pointer flex-col', className)}>
       <div
         className={cn(
-          'hover:bg-accent before:bg-sidebar-border after:bg-foreground relative flex items-center justify-between gap-2 rounded-sm p-1 before:absolute before:top-0 before:left-[11px] before:h-full before:w-[1.5px] after:absolute after:top-1/2 after:left-[9px] after:h-[6px] after:w-[6px] after:-translate-y-1/2 after:rounded-full before:hidden after:hidden',
+          'hover:bg-accent before:bg-sidebar-border after:bg-foreground relative flex items-center justify-between gap-2 rounded-sm p-1 before:absolute before:top-0 before:left-[11px] before:hidden before:h-full before:w-[1.5px] after:absolute after:top-1/2 after:left-[9px] after:hidden after:h-[6px] after:w-[6px] after:-translate-y-1/2 after:rounded-full',
           {
             'hover:before:block': nestLevel > 1,
             'bg-accent': activeKey === listNode.key,
-            'before:block after:block': nestLevel > 1 && activeKey === listNode.key
+            'before:block after:block':
+              nestLevel > 1 && activeKey === listNode.key,
           },
           itemClassName
         )}
+        onClick={(e) => {
+          e.stopPropagation()
+          setActiveKey(listNode.key)
+          onClick?.(listNode)
+        }}
       >
         <div
           className={cn('flex w-full items-center gap-2', {
@@ -99,6 +98,7 @@ const ListItem: FC<ListItemProps> = (props) => {
               itemClassName="pl-7"
               listNode={node}
               nestLevel={nestLevel + 1}
+              onClick={onClick}
             />
           ))}
         </div>

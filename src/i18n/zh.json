@@ -11,7 +11,11 @@
     "seeOnGithub": "在 Github 上查看项目",
     "contactOnWechat": "在微信上联系我",
     "loading": "加载中...",
-    "all": "全部"
+    "all": "全部",
+    "dashboard": "仪表盘",
+    "category": "分类",
+    "tag": "标签",
+    "copyRoute": "复制网页链接"
   },
   "header": {
     "navigationMenu": "导航菜单",

@@ -44,7 +44,7 @@ const List: FC<ListProps> = (props) => {
             nestLevel={1}
             listNode={listNode}
             key={listNode.key}
-            onClick={() => onClick?.(listNode)}
+            onClick={onClick}
           />
         ))}
       </div>

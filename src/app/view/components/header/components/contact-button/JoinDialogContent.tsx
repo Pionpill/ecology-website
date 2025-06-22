@@ -1,27 +1,21 @@
 import QQ from '@/components/icon/QQ'
+import TooltipButton from '@/components/shared/TooltipButton'
 import { Button } from '@/components/ui/button'
 import {
+  DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogContent,
   DialogTitle,
 } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
 import useDeviceStore from '@/hooks/useDeviceStore'
-import { UserPlus, Clipboard, Check } from 'lucide-react'
+import { Clipboard, UserPlus } from 'lucide-react'
 import { QRCodeSVG } from 'qrcode.react'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const JoinDialogContext: FC = () => {
   const { t } = useTranslation()
-  const [groupCopy, setGroupCopy] = useState(false)
-  const [authorCopy, setAuthorCopy] = useState(false)
   const { device } = useDeviceStore()
 
   return (
@@ -64,33 +58,17 @@ const JoinDialogContext: FC = () => {
           </div>
           <span className="flex items-center gap-1 text-xs">
             712936357
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  className="size-5 cursor-pointer rounded-xs"
-                  variant="secondary"
-                  onClick={() => {
-                    navigator.clipboard.writeText('712936357')
-                    setGroupCopy(true)
-                    setTimeout(() => {
-                      setGroupCopy(false)
-                    }, 1000)
-                  }}
-                >
-                  {groupCopy ? <Check /> : <Clipboard />}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                <p>
-                  {groupCopy
-                    ? t('common.copySuccess')
-                    : t('common.copyToClipboard')}
-                </p>
-              </TooltipContent>
-            </Tooltip>
+            <TooltipButton
+              variant="ghost"
+              side="bottom"
+              tooltipContent={t('common.copyToClipboard')}
+              onClick={() => navigator.clipboard.writeText('712936357')}
+            >
+              <Clipboard />
+            </TooltipButton>
           </span>
         </div>
-        <Separator orientation={device === "PC" ? "vertical" : "horizontal"} />
+        <Separator orientation={device === 'PC' ? 'vertical' : 'horizontal'} />
         <div className="flex flex-col items-center gap-2">
           <div className="relative">
             <QRCodeSVG
@@ -111,30 +89,16 @@ const JoinDialogContext: FC = () => {
           </div>
           <span className="flex items-center gap-1 text-[10px]">
             wxid_ako3myhp30ye22
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  className="size-5 cursor-pointer rounded-xs"
-                  variant="secondary"
-                  onClick={() => {
-                    navigator.clipboard.writeText('wxid_ako3myhp30ye22')
-                    setAuthorCopy(true)
-                    setTimeout(() => {
-                      setAuthorCopy(false)
-                    }, 1000)
-                  }}
-                >
-                  {authorCopy ? <Check /> : <Clipboard />}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                <p>
-                  {authorCopy
-                    ? t('common.copySuccess')
-                    : t('common.copyToClipboard')}
-                </p>
-              </TooltipContent>
-            </Tooltip>
+            <TooltipButton
+              variant="ghost"
+              side="bottom"
+              tooltipContent={t('common.copyToClipboard')}
+              onClick={() =>
+                navigator.clipboard.writeText('wxid_ako3myhp30ye22')
+              }
+            >
+              <Clipboard />
+            </TooltipButton>
           </span>
         </div>
       </div>
