@@ -40,7 +40,7 @@ const BiomeSidebar: FC = () => {
   const handleCategoryClick = (node: ListNode) => {
     const isGroup = 'children' in node
     if (isGroup) {
-      setBiomeFilter({ categories: [node.key as BiomeCategory] }, true)
+      setBiomeFilter({ category: [node.key as BiomeCategory] }, true)
       navigate(`/wiki/biome/dashboard?category=${node.key}`)
     } else {
       navigate(`/wiki/biome/${node.key}`)

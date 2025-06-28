@@ -1,11 +1,8 @@
-import TooltipButton from '@/components/shared/TooltipButton'
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
 } from '@/components/ui/breadcrumb'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
 import useLangStore from '@/hooks/useLangStore'
 import {
   BiomeCategory,
@@ -15,11 +12,13 @@ import {
   getBiomeName,
   getBiomeTagName,
 } from '@ecology-mc/data'
-import { Link as LinkIcon, PanelLeftOpen, PanelRightOpen } from 'lucide-react'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router'
 import useBiomeFilterStore from '../useBiomeFilterStore'
+import { Button } from '@/components/ui/button'
+import { PanelLeftOpen, PanelRightOpen } from 'lucide-react'
+import { Separator } from '@/components/ui/separator'
 import useSidebarStore from '../useSidebarStore'
 
 const BiomeHeader: FC = () => {
@@ -38,7 +37,7 @@ const BiomeHeader: FC = () => {
   const isDashboard = location.pathname.includes('dashboard')
 
   return (
-    <div className="flex items-center justify-between gap-2 p-2">
+    <div className="flex gap-2 p-2">
       <div className="flex items-center gap-1">
         <Button
           variant="ghost"
@@ -103,7 +102,7 @@ const BiomeHeader: FC = () => {
                         className="text-sm lowercase opacity-80 transition-all hover:opacity-100"
                         to={`/wiki/biome/dashboard?tag=${tag}`}
                         onClick={() =>
-                          setBiomeFilter({ tags: [tag as BiomeTag] }, true)
+                          setBiomeFilter({ tags: [tag as BiomeTag] })
                         }
                       >
                         {getBiomeTagName(tag as BiomeTag, lang)}
@@ -133,13 +132,6 @@ const BiomeHeader: FC = () => {
           )}
         </Breadcrumb>
       </div>
-      <TooltipButton
-        variant="outline"
-        tooltipContent={t('common.copyRoute')}
-        onClick={() => navigator.clipboard.writeText(window.location.href)}
-      >
-        <LinkIcon />
-      </TooltipButton>
     </div>
   )
 }

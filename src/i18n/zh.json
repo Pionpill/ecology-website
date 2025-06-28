@@ -15,7 +15,23 @@
     "dashboard": "仪表盘",
     "category": "分类",
     "tag": "标签",
-    "copyRoute": "复制网页链接"
+    "copyRoute": "复制网页链接",
+    "list": "列表",
+    "card": "卡片",
+    "search": "搜索",
+    "condition": "条件",
+    "filter": "筛选",
+    "temperature": "温度",
+    "rainfall": "湿度",
+    "generate": "生成概率",
+    "dimension": "维度",
+    "pleaseSelect": "请选择",
+    "checkAll": "选择全部",
+    "clearCheckAll": "取消全选",
+    "pinFilterToBar": "固定到外部筛选栏",
+    "unpinFilterFromBar": "取消固定到外部筛选栏",
+    "confirm": "确定",
+    "cancel": "取消"
   },
   "header": {
     "navigationMenu": "导航菜单",
@@ -44,7 +60,13 @@
       "tag": "标签",
       "description": "生物群系（Biome）是Minecraft世界中形态各异的地区，有着多样的地理特征、植物群、海拔高度、温度、湿度及天空、水域和植被颜色。生物群系将生成的世界划分为一个个不同的自然环境，譬如森林、丛林、沙漠和针叶林。",
       "descriptionClick": "点击跳转到官方 wiki 页面",
-      "usage": "点击上方分类/标签显示对应的群落合集，点击群落显示群落信息"
+      "usage": "点击上方分类/标签显示对应的群落合集，点击群落显示群落信息",
+      "biomeFilterPanel": "群落条件筛选面板",
+      "biomeFilterPanelDescription": "选择对应的筛选条件，退出面板后将展示符合条件的群落",
+      "chooseFilter": "选择筛选条件",
+      "filterCount": "符合条件的群落数量",
+      "pinAll": "固定全部",
+      "unpinAll": "取消固定全部"
     },
     "plant": {
       "name": "作物"

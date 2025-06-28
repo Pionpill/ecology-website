@@ -15,7 +15,23 @@
     "dashboard": "dashboard",
     "category": "category",
     "tag": "tag",
-    "copyRoute": "copy web link"
+    "copyRoute": "copy web link",
+    "list": "list",
+    "card": "card",
+    "search": "search",
+    "condition": "condition",
+    "filter": "filter",
+    "temperature": "temperature",
+    "rainfall": "rainfall",
+    "generate": "generate",
+    "dimension": "dimension",
+    "pleaseSelect": "please select",
+    "checkAll": "check all",
+    "clearCheckAll": "clear check all",
+    "pinFilterToBar": "pin filter to outer bar",
+    "unpinFilterFromBar": "unpin filter from outer bar",
+    "confirm": "confirm",
+    "cancel": "cancel"
   },
   "header": {
     "navigationMenu": "navigation menu",
@@ -44,7 +60,13 @@
       "tag": "tag",
       "description": "A biome is a region in a world with distinct geographical features, flora, temperatures, humidities, and sky, water, fog, grass and foliage colors. Biomes separate every generated world into different environments, such as forests, deserts and taigas.",
       "descriptionClick": "click to jump to the official wiki page",
-      "usage": "Click the category/tag above to display the corresponding collection, click the biome to display biome information"
+      "usage": "Click the category/tag above to display the corresponding collection, click the biome to display biome information",
+      "biomeFilterPanel": "biome filter panel",
+      "biomeFilterPanelDescription": "Select the corresponding filter condition, and the biome that matches the condition will be displayed after exiting the panel",
+      "chooseFilter": "choose filter condition",
+      "filterCount": "filtered biome count",
+      "pinAll": "pin all",
+      "unpinAll": "unpin all"
     },
     "plant": {
       "name": "plant"
