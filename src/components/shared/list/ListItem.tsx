@@ -95,6 +95,7 @@ const ListItem: FC<ListItemProps> = (props) => {
         >
           {nodeInfo.children?.map((node) => (
             <ListItem
+              key={node.key}
               itemClassName="pl-7"
               listNode={node}
               nestLevel={nestLevel + 1}

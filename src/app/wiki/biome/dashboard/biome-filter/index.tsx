@@ -21,7 +21,14 @@ const BiomeFilter: FC = () => {
   const filter = useBiomeFilterStore()
 
   const [searchParams] = useSearchParams()
-  const [pinFilter, setPinFilter] = useState<Array<keyof BiomeFilterState>>([])
+  const [pinFilter, setPinFilter] = useState<Array<keyof BiomeFilterState>>([
+    'temperature',
+    'rainfall',
+    'generate',
+    'dimension',
+    'category',
+    'tags',
+  ])
 
   useMemo(() => {
     const category = searchParams.get('category')
@@ -35,7 +42,7 @@ const BiomeFilter: FC = () => {
     newFilter,
     pinFilter
   ) => {
-    filter.setBiomeFilter(newFilter)
+    filter.setBiomeFilter(newFilter, true)
     setPinFilter(pinFilter)
   }
 

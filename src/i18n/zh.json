@@ -16,6 +16,7 @@
     "category": "分类",
     "tag": "标签",
     "copyRoute": "复制网页链接",
+    "table": "表格",
     "list": "列表",
     "card": "卡片",
     "search": "搜索",
@@ -31,7 +32,23 @@
     "pinFilterToBar": "固定到外部筛选栏",
     "unpinFilterFromBar": "取消固定到外部筛选栏",
     "confirm": "确定",
-    "cancel": "取消"
+    "cancel": "取消",
+    "count": "数量",
+    "total": "总计",
+    "percent": "占比"
+  },
+  "data": {
+    "biome": {
+      "id": "编号",
+      "name": "名称",
+      "rainfall": "湿度",
+      "temperature": "温度",
+      "generate": "生成概率",
+      "dimension": "维度",
+      "category": "分类",
+      "tags": "标签",
+      "snowAccumulation": "积雪量"
+    }
   },
   "header": {
     "navigationMenu": "导航菜单",

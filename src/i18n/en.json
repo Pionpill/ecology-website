@@ -16,6 +16,7 @@
     "category": "category",
     "tag": "tag",
     "copyRoute": "copy web link",
+    "table": "table",
     "list": "list",
     "card": "card",
     "search": "search",
@@ -31,7 +32,23 @@
     "pinFilterToBar": "pin filter to outer bar",
     "unpinFilterFromBar": "unpin filter from outer bar",
     "confirm": "confirm",
-    "cancel": "cancel"
+    "cancel": "cancel",
+    "count": "count",
+    "total": "total",
+    "percent": "percent"
+  },
+  "data": {
+    "biome": {
+      "id": "id",
+      "name": "name",
+      "rainfall": "rainfall",
+      "temperature": "temperature",
+      "generate": "generate",
+      "dimension": "dimension",
+      "category": "category",
+      "tags": "tags",
+      "snowAccumulation": "snow accumulation"
+    }
   },
   "header": {
     "navigationMenu": "navigation menu",

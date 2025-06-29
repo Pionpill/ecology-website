@@ -59,7 +59,7 @@ const BiomeSidebar: FC = () => {
 
   return (
     <div
-      className={cn('overflow-hidden transition-all duration-500', {
+      className={cn('overflow-hidden transition-all duration-500 bg-sidebar', {
         'w-56': open,
         'w-0': !open,
       })}
@@ -73,7 +73,7 @@ const BiomeSidebar: FC = () => {
           <div className="flex items-center justify-between truncate overflow-hidden font-semibold uppercase">
             {t('wiki.biome.title')}
             <Tooltip>
-              <TooltipTrigger>
+              <TooltipTrigger asChild>
                 <Button
                   variant="ghost"
                   className="size-6 cursor-pointer"
@@ -102,7 +102,7 @@ const BiomeSidebar: FC = () => {
           >
             <LineTabsList>
               {tabs.map((tab) => (
-                <LineTabsTrigger value={tab.value}>{tab.label}</LineTabsTrigger>
+                <LineTabsTrigger key={tab.value} value={tab.value}>{tab.label}</LineTabsTrigger>
               ))}
             </LineTabsList>
             <TabsContent value="category" className="flex-1 overflow-auto">

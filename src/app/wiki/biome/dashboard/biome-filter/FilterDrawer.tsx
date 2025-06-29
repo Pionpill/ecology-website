@@ -62,9 +62,14 @@ const FilterDrawer: FC<FilterDrawerProps> = (props) => {
     'tags',
   ]
 
-  const [pinFilters, setPinFilters] = useState<Array<keyof BiomeFilterState>>(
-    []
-  )
+  const [pinFilters, setPinFilters] = useState<Array<keyof BiomeFilterState>>([
+    'temperature',
+    'rainfall',
+    'generate',
+    'dimension',
+    'category',
+    'tags',
+  ])
   const [checkedFilter, setCheckedFilter] = useState<
     Array<keyof BiomeFilterState>
   >([])

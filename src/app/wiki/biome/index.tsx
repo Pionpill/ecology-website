@@ -8,7 +8,7 @@ const Biome: FC = () => {
   return (
     <div className="flex flex-1 border-r">
       <BiomeSidebar />
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col overflow-auto">
         <BiomeHeader />
         <Separator />
         <Outlet />
