@@ -25,16 +25,22 @@
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tanstack/react-table": "^8.21.3",
+    "add": "^2.0.6",
+    "card": "^2.5.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "dlx": "^0.2.1",
     "i18next": "^25.2.1",
     "lucide-react": "^0.522.0",
+    "pnpm": "^10.12.4",
     "qrcode.react": "^4.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-i18next": "^15.5.3",
     "react-router": "^7.6.2",
+    "recharts": "^3.0.2",
+    "shadcn": "^2.7.0",
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2",
     "zustand": "^5.0.5"
@@ -58,5 +64,8 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^6.3.5"
+  },
+  "overrides": {
+    "react-is": "^19.1.0"
   }
 }

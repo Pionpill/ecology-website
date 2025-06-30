@@ -1,5 +1,5 @@
-import { biomeCategoryIcons } from '@/constant/biome'
 import useLangStore from '@/hooks/useLangStore'
+import { getBiomeCatalogIcon } from '@/utils/biome'
 import {
   BIOME_CATEGORY,
   BiomeModel,
@@ -18,7 +18,7 @@ const useBiomeCategoryList = () => {
         return {
           label,
           key: category,
-          icon: biomeCategoryIcons[category],
+          icon: getBiomeCatalogIcon(category),
           children: BiomeModel.getByFilter({ category }).map((biome) => ({
             label: getBiomeName(biome.biomeId, lang),
             key: biome.biomeId,

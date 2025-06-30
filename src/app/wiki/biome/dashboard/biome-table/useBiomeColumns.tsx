@@ -1,5 +1,4 @@
 import { Badge } from '@/components/ui/badge'
-import { biomeCategoryIcons } from '@/constant/biome'
 import useLangStore from '@/hooks/useLangStore'
 import { cn } from '@/lib/utils'
 import {
@@ -11,18 +10,13 @@ import {
   getDimensionName,
 } from '@ecology-mc/data'
 import { ColumnDef } from '@tanstack/react-table'
-import {
-  Cloud,
-  CloudDrizzle,
-  CloudRain,
-  Eye,
-  Globe,
-  Skull,
-  Thermometer,
-  ThermometerSnowflake,
-  ThermometerSun,
-} from 'lucide-react'
+import { Eye, Globe, Skull } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import {
+  getBiomeCatalogIcon,
+  getRainfallIcon,
+  getTemperatureIcon,
+} from '@/utils/biome'
 
 const useBiomeColumns = (): ColumnDef<BiomeModel>[] => {
   const { t } = useTranslation()
@@ -55,7 +49,7 @@ const useBiomeColumns = (): ColumnDef<BiomeModel>[] => {
       cell: ({ row }) => (
         <div className="flex flex-col gap-1">
           <Badge variant="secondary">
-            {biomeCategoryIcons[row.original.category]}
+            {getBiomeCatalogIcon(row.original.category)}
             {getBiomeCategoryName(row.original.category, lang)}
           </Badge>
           <div className="text-muted-foreground flex gap-1 pl-1 text-[10px]">
@@ -69,51 +63,22 @@ const useBiomeColumns = (): ColumnDef<BiomeModel>[] => {
     {
       id: 'temperature',
       header: t('data.biome.temperature'),
-      cell: ({ row }) => {
-        const temperatureType =
-          row.original.temperature > 20
-            ? 'hot'
-            : row.original.temperature < 0
-              ? 'cold'
-              : 'warm'
-        return (
-          <div className={cn('flex items-center gap-1 text-sm')}>
-            {temperatureType === 'hot' ? (
-              <ThermometerSun size={16} />
-            ) : temperatureType === 'cold' ? (
-              <ThermometerSnowflake size={16} />
-            ) : (
-              <Thermometer size={16} />
-            )}
-            {`${row.original.temperature * 20}℃`}
-          </div>
-        )
-      },
+      cell: ({ row }) => (
+        <div className={cn('flex items-center gap-1 text-sm')}>
+          {getTemperatureIcon(row.original.temperature, 16)}
+          {`${row.original.temperature * 20}℃`}
+        </div>
+      ),
     },
     {
       id: 'rainfall',
       header: t('data.biome.rainfall'),
-      cell: ({ row }) => {
-        const rainfallType =
-          row.original.rainfall > 0.6
-            ? 'wet'
-            : row.original.rainfall < 0.2
-              ? 'dry'
-              : 'normal'
-
-        return (
-          <div className={cn('flex items-center gap-1 text-sm')}>
-            {rainfallType === 'wet' ? (
-              <CloudRain size={16} />
-            ) : rainfallType === 'normal' ? (
-              <CloudDrizzle size={16} />
-            ) : (
-              <Cloud size={16} />
-            )}
-            {`${row.original.rainfall * 100}%`}
-          </div>
-        )
-      },
+      cell: ({ row }) => (
+        <div className={cn('flex items-center gap-1 text-sm')}>
+          {getRainfallIcon(row.original.rainfall, 16)}
+          {`${row.original.rainfall * 100}%`}
+        </div>
+      ),
     },
     {
       id: 'dimension',

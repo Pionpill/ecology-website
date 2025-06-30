@@ -19,6 +19,8 @@
     "table": "table",
     "list": "list",
     "card": "card",
+    "grid": "grid",
+    "plot": "plot",
     "search": "search",
     "condition": "condition",
     "filter": "filter",
@@ -35,7 +37,8 @@
     "cancel": "cancel",
     "count": "count",
     "total": "total",
-    "percent": "percent"
+    "percent": "percent",
+    "onFilterResult": "no filter result"
   },
   "data": {
     "biome": {
@@ -83,7 +86,9 @@
       "chooseFilter": "choose filter condition",
       "filterCount": "filtered biome count",
       "pinAll": "pin all",
-      "unpinAll": "unpin all"
+      "unpinAll": "unpin all",
+      "temperatureRainfallChart": "temperature & rainfall bar chart",
+      "temperatureRainfallChartDescription": "The bar chart shows the temperature and rainfall of different biomes"
     },
     "plant": {
       "name": "plant"

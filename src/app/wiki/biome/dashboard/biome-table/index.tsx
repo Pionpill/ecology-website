@@ -14,6 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useTranslation } from 'react-i18next'
 
 export type BiomeTableProps = {
   data: BiomeModel[]
@@ -21,6 +22,7 @@ export type BiomeTableProps = {
 
 const BiomeTable: FC<BiomeTableProps> = (props) => {
   const { data } = props
+  const { t } = useTranslation()
   const columns = useBiomeColumns()
 
   const table = useReactTable({
@@ -33,7 +35,7 @@ const BiomeTable: FC<BiomeTableProps> = (props) => {
 
   return (
     <Table>
-      <TableHeader className="bg-muted rounded-lg sticky top-0">
+      <TableHeader className="bg-muted sticky top-0 rounded-lg">
         {table.getHeaderGroups().map((group) => (
           <TableRow key={group.id}>
             {group.headers.map((header) => (
@@ -55,6 +57,7 @@ const BiomeTable: FC<BiomeTableProps> = (props) => {
             <TableRow
               key={row.id}
               data-state={row.getIsSelected() && 'selected'}
+              className="cursor-pointer"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id}>
@@ -66,7 +69,7 @@ const BiomeTable: FC<BiomeTableProps> = (props) => {
         ) : (
           <TableRow>
             <TableCell colSpan={columns.length} className="h-24 text-center">
-              No results.
+              {t('common.noResults')}
             </TableCell>
           </TableRow>
         )}

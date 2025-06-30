@@ -1,15 +1,17 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { CreditCard, List, Sheet } from 'lucide-react'
-import { useMemo, useState } from 'react'
-import { FC } from 'react'
-import { useTranslation } from 'react-i18next'
-import BiomeFilter from './biome-filter'
-import useBiomeFilterStore from '../useBiomeFilterStore'
-import { BiomeModel, getBiomeName } from '@ecology-mc/data'
 import useLangStore from '@/hooks/useLangStore'
+import { BiomeModel, getBiomeName } from '@ecology-mc/data'
+import { ChartColumnBig, CreditCard, List, Sheet } from 'lucide-react'
+import { FC, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import useBiomeFilterStore from '../useBiomeFilterStore'
+import BiomeCard from './biome-card'
+import BiomeChart from './biome-chart'
+import BiomeFilter from './biome-filter'
+import BiomeList from './biome-list'
 import BiomeTable from './biome-table'
 
-export type BiomeDashboardMode = 'table' | 'list' | 'card'
+export type BiomeDashboardMode = 'table' | 'list' | 'card' | 'chart'
 
 const BiomeDashboard: FC = () => {
   // const {categories, tags, setBiomeFilter} = useBiomeFilterStore()
@@ -71,12 +73,24 @@ const BiomeDashboard: FC = () => {
               <CreditCard />
               {t('common.card')}
             </TabsTrigger>
+            <TabsTrigger value="chart" className="cursor-pointer">
+              <ChartColumnBig />
+              {t('common.plot')}
+            </TabsTrigger>
           </TabsList>
         </div>
         <BiomeFilter />
       </Tabs>
       <div className="flex flex-1 flex-col gap-4 overflow-auto p-2">
-        <BiomeTable data={biomes} />
+        {mode === 'list' ? (
+          <BiomeList data={biomes} />
+        ) : mode === 'card' ? (
+          <BiomeCard data={biomes} />
+        ) : mode === 'chart' ? (
+          <BiomeChart data={biomes} />
+        ) : (
+          <BiomeTable data={biomes} />
+        )}
         <div className="text-muted-foreground flex justify-end gap-2">
           <span>
             {t('wiki.biome.name') + t('common.count')}: {biomeTotalInfo.count}

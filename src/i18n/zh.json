@@ -19,6 +19,8 @@
     "table": "表格",
     "list": "列表",
     "card": "卡片",
+    "grid": "网格",
+    "plot": "图形",
     "search": "搜索",
     "condition": "条件",
     "filter": "筛选",
@@ -35,7 +37,8 @@
     "cancel": "取消",
     "count": "数量",
     "total": "总计",
-    "percent": "占比"
+    "percent": "占比",
+    "onFilterResult": "没有过滤结果"
   },
   "data": {
     "biome": {
@@ -83,7 +86,9 @@
       "chooseFilter": "选择筛选条件",
       "filterCount": "符合条件的群落数量",
       "pinAll": "固定全部",
-      "unpinAll": "取消固定全部"
+      "unpinAll": "取消固定全部",
+      "temperatureRainfallChart": "温度与湿度柱状图",
+      "temperatureRainfallChartDescription": "柱状图展示了不同群落的温度与湿度"
     },
     "plant": {
       "name": "作物"

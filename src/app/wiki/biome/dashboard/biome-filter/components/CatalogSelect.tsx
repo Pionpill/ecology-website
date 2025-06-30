@@ -9,7 +9,7 @@ import {
   BiomeCategory,
   getBiomeCategoryName,
 } from '@ecology-mc/data'
-import { biomeCategoryIcons } from '@/constant/biome'
+import { getBiomeCatalogIcon } from '@/utils/biome'
 
 const CatalogSelect: FC<Partial<MultiSelectProp>> = (props) => {
   const { t } = useTranslation()
@@ -26,7 +26,7 @@ const CatalogSelect: FC<Partial<MultiSelectProp>> = (props) => {
       options={BIOME_CATEGORY.map((category) => ({
         label: getBiomeCategoryName(category, lang),
         value: category,
-        icon: biomeCategoryIcons[category],
+        icon: getBiomeCatalogIcon(category),
       }))}
       onChange={(newCategory) =>
         filter.setBiomeFilter({
