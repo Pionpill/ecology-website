@@ -27,6 +27,7 @@
     "temperature": "温度",
     "rainfall": "湿度",
     "generate": "生成概率",
+    "percentage": "占比",
     "dimension": "维度",
     "pleaseSelect": "请选择",
     "checkAll": "选择全部",
@@ -87,8 +88,12 @@
       "filterCount": "符合条件的群落数量",
       "pinAll": "固定全部",
       "unpinAll": "取消固定全部",
-      "temperatureRainfallChart": "温度与湿度柱状图",
-      "temperatureRainfallChartDescription": "柱状图展示了不同群落的温度与湿度"
+      "temperatureLineChart": "温度柱状图",
+      "temperatureLineChartDescription": "柱状图展示了不同群落的温度",
+      "rainfallLineChart": "湿度柱状图",
+      "rainfallLineChartDescription": "柱状图展示了不同群落的湿度",
+      "categoryGenerateTreeChart": "分类生成率树状图",
+      "categoryGenerateTreeChartDescription": "树状图展示了不同分类的生物群落生成率"
     },
     "plant": {
       "name": "作物"

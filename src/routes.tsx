@@ -12,7 +12,8 @@ const AppRoute: FC = () => (
         <Route index element={<Navigate to="wiki" />} />
         <Route path="wiki/*" element={<Wiki />}>
           <Route index element={<Navigate to="biome" />} />
-          <Route path="biome" element={<Biome />} >
+          <Route path="biome" element={<Biome />}>
+            <Route index element={<Navigate to="dashboard" />} />
             <Route path=":biomeId" element={<BiomeDashboard />} />
             <Route path="dashboard" element={<BiomeDashboard />} />
           </Route>

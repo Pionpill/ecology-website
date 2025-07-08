@@ -18,9 +18,14 @@ import { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 import { BiomeChartProps } from '.'
+import { cn } from '@/lib/utils'
 
-const BiomeLineChart: FC<BiomeChartProps> = (props) => {
-  const { data } = props
+export type BiomeLineChartProps = BiomeChartProps & {
+  type: 'temperature' | 'rainfall'
+}
+
+const BiomeLineChart: FC<BiomeLineChartProps> = (props) => {
+  const { data, type, className, containerClassName } = props
   const { t } = useTranslation()
   const { lang } = useLangStore()
 
@@ -32,7 +37,7 @@ const BiomeLineChart: FC<BiomeChartProps> = (props) => {
       },
       rainfall: {
         label: t('common.rainfall'),
-        color: 'var(--chart-2)',
+        color: 'var(--chart-1)',
       },
     }),
     []
@@ -47,17 +52,23 @@ const BiomeLineChart: FC<BiomeChartProps> = (props) => {
   }, [data])
 
   return (
-    <Card className="h-auto border-none py-0 shadow-none">
+    <Card className={cn("w-auto border-none shadow-none", className)}>
       <CardHeader>
-        <CardTitle>{t('wiki.biome.temperatureRainfallChart')}</CardTitle>
+        <CardTitle className="uppercase">
+          {type === 'temperature'
+            ? t('wiki.biome.temperatureLineChart')
+            : t('wiki.biome.rainfallLineChart')}
+        </CardTitle>
         <CardDescription>
-          {t('wiki.biome.temperatureRainfallChartDescription')}
+          {type === 'temperature'
+            ? t('wiki.biome.temperatureLineChartDescription')
+            : t('wiki.biome.rainfallLineChartDescription')}
         </CardDescription>
       </CardHeader>
       <CardContent className="p-0">
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className={cn('w-full', containerClassName)}>
           <BarChart accessibilityLayer data={chartData}>
-            <CartesianGrid vertical={false}/>
+            <CartesianGrid vertical={false} />
             <XAxis
               dataKey="name"
               tickLine={false}
@@ -69,25 +80,15 @@ const BiomeLineChart: FC<BiomeChartProps> = (props) => {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              unit="℃"
+              unit={type === 'temperature' ? '℃' : '%'}
               orientation="left"
-              domain={[-20, 40]}
-            />
-            <YAxis
-              yAxisId="right"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              unit="%"
-              orientation="right"
-              domain={[-50, 100]}
             />
             <ChartTooltip
               content={<ChartTooltipContent indicator="line" />}
-              formatter={(value, name, item) => {
-                console.log('item', item)
-                return (
-                  <>
+              formatter={(value, name, item) => (
+                <div className="flex flex-col gap-2">
+                  <span className="font-semibold">{item.payload.name}</span>
+                  <div className="flex items-center gap-1">
                     <div
                       className="h-2.5 w-2.5 shrink-0 rounded-[2px] bg-(--color-bg)"
                       style={
@@ -109,21 +110,14 @@ const BiomeLineChart: FC<BiomeChartProps> = (props) => {
                         {item.dataKey === 'temperature' ? '℃' : '%'}
                       </span>
                     </div>
-                  </>
-                )
-              }}
+                  </div>
+                </div>
+              )}
             />
             <Bar
               yAxisId="left"
-              dataKey="temperature"
+              dataKey={type === 'temperature' ? 'temperature' : 'rainfall'}
               fill="var(--chart-1)"
-              radius={4}
-            />
-            <Bar
-              yAxisId="right"
-              dataKey="rainfall"
-              fill="var(--chart-2)"
-              radius={4}
             />
           </BarChart>
         </ChartContainer>

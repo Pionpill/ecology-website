@@ -27,6 +27,7 @@
     "temperature": "temperature",
     "rainfall": "rainfall",
     "generate": "generate",
+    "percentage": "percentage",
     "dimension": "dimension",
     "pleaseSelect": "please select",
     "checkAll": "check all",
@@ -87,8 +88,12 @@
       "filterCount": "filtered biome count",
       "pinAll": "pin all",
       "unpinAll": "unpin all",
-      "temperatureRainfallChart": "temperature & rainfall bar chart",
-      "temperatureRainfallChartDescription": "The bar chart shows the temperature and rainfall of different biomes"
+      "temperatureLineChart": "temperature bar chart",
+      "temperatureLineChartDescription": "bar chart shows the temperature of different biomes",
+      "rainfallLineChart": "rainfall bar chart",
+      "rainfallLineChartDescription": "bar chart shows the rainfall of different biomes",
+      "categoryGenerateTreeChart": "category generate rate tree chart",
+      "categoryGenerateTreeChartDescription": "tree chart shows the generate rate of different categories"
     },
     "plant": {
       "name": "plant"
