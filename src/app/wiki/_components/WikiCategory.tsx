@@ -4,7 +4,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { Grid2x2, MountainSnow, Sprout, Wheat } from 'lucide-react'
+import { Grid2x2, MountainSnow, Package, Sprout } from 'lucide-react'
 import { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router'
@@ -29,7 +29,7 @@ const WikiCategory: FC = () => {
       },
       {
         path: '/wiki/item',
-        icon: <Wheat />,
+        icon: <Package />,
         title: t('wiki.item.name'),
       },
       {
@@ -43,7 +43,7 @@ const WikiCategory: FC = () => {
 
   return (
     <div className="bg-
-     flex bg-sidebar-accent h-full w-14 flex-col items-center gap-1 py-4">
+     flex bg-sidebar-accent h-full w-14 flex-col items-center gap-1 py-4 border-r">
       {sideItems.map((item) => (
         <Tooltip key={item.path}>
           <TooltipTrigger asChild>

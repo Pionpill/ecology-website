@@ -1,4 +1,4 @@
-/** 获取两个数组得交集 */
+/** 获取两个数组的交集 */
 export const getIntersection = <T = string>(arr1: Array<T>, arr2: Array<T>) => {
   const set = new Set<T>(arr1)
   const result = [] as Array<T>
@@ -15,4 +15,17 @@ export const hasIntersection = <T = string>(arr1: Array<T>, arr2: Array<T>) => {
     if (set.has(arr2[i])) return true
   }
   return false
+}
+
+/** 判断两个范围是否有交集 */
+export const hasIntersectionRange = (range1: [number, number], range2: [number, number], edge = true) => {
+  const [min1, max1] = range1;
+  const [min2, max2] = range2;
+  return edge ? min1 <= max2 && max1 >= min2 : min1 < max2 && max1 > min2;
+};
+
+/** 判断一个值是否在范围内 */
+export const inRange = (value: number, range: [number, number], edge = true) => {
+  const [min, max] = range;
+  return edge ? value >= min && value <= max : value > min && value < max;
 }

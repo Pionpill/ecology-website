@@ -39,7 +39,9 @@
     "count": "count",
     "total": "total",
     "percent": "percent",
-    "onFilterResult": "no filter result"
+    "onFilterResult": "no filter result",
+    "suit": "suit",
+    "can": "can"
   },
   "data": {
     "biome": {
@@ -93,7 +95,13 @@
       "rainfallLineChart": "rainfall bar chart",
       "rainfallLineChartDescription": "bar chart shows the rainfall of different biomes",
       "categoryGenerateTreeChart": "category generate rate tree chart",
-      "categoryGenerateTreeChartDescription": "tree chart shows the generate rate of different categories"
+      "categoryGenerateTreeChartDescription": "tree chart shows the generate rate of different categories",
+      "plantList": "plant List",
+      "plantListDescription": "All crops suitable for cultivation in this biome",
+      "plantListTooltip": "Click Crop Classification - Enter the name to filter, click on the specific crop to view the planting information in the biome",
+      "plantStatistics": "plant statistics",
+      "plantStatisticsDescription": "The crops suitable and can be cultivated in this biome",
+      "availablePlantType": "number of different types of crops that can be cultivated"
     },
     "plant": {
       "name": "plant"

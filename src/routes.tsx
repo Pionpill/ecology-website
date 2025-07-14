@@ -4,6 +4,7 @@ import View from './app/view'
 import Wiki from './app/wiki'
 import Biome from './app/wiki/biome'
 import BiomeDashboard from './app/wiki/biome/dashboard'
+import BiomeInfo from './app/wiki/biome/info'
 
 const AppRoute: FC = () => (
   <BrowserRouter basename="/ecology">
@@ -14,8 +15,8 @@ const AppRoute: FC = () => (
           <Route index element={<Navigate to="biome" />} />
           <Route path="biome" element={<Biome />}>
             <Route index element={<Navigate to="dashboard" />} />
-            <Route path=":biomeId" element={<BiomeDashboard />} />
             <Route path="dashboard" element={<BiomeDashboard />} />
+            <Route path=":biomeId" element={<BiomeInfo />} />
           </Route>
         </Route>
       </Route>
