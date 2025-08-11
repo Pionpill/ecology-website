@@ -17,7 +17,7 @@ const PCHeader: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <div className="bg-accent flex h-10 items-center justify-between border-b px-2 py-1">
+    <div className="flex h-10 items-center justify-between border-b px-2 py-1">
       <img src={getCosImageUrl('ecology/imgs/ecology.png')} className="h-8" />
       <NavigationMenu viewport={false}>
         <NavigationMenuList>

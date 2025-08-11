@@ -15,10 +15,11 @@ import {
 import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Bar, CartesianGrid, ComposedChart, Line, XAxis, YAxis } from 'recharts'
+import { BiomePlantEnvironment } from './interface'
 
 export type PlantBarChartProps = {
-  canPlants: PlantModel[]
-  suitPlants: PlantModel[]
+  canPlants: BiomePlantEnvironment[]
+  suitPlants: BiomePlantEnvironment[]
 }
 
 const PlantBarChartInner: FC<PlantBarChartProps> = (props) => {
@@ -43,14 +44,14 @@ const PlantBarChartInner: FC<PlantBarChartProps> = (props) => {
       percent: 0,
     }))
 
-    suitPlants.forEach((plant) => {
-      const plantData = data.find((item) => item.type === plant.type)
+    suitPlants.forEach((plantInfo) => {
+      const plantData = data.find((item) => item.type === plantInfo.plant.type)
       if (!plantData) return
       plantData.suit += 1
     })
 
-    canPlants.forEach((plant) => {
-      const plantData = data.find((item) => item.type === plant.type)
+    canPlants.forEach((plantInfo) => {
+      const plantData = data.find((item) => item.type === plantInfo.plant.type)
       if (!plantData) return
       plantData.can += 1
     })

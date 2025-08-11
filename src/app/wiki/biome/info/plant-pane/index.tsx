@@ -9,56 +9,110 @@ import {
 import useLangStore from '@/hooks/useLangStore'
 import { cn } from '@/lib/utils'
 import { hasIntersectionRange } from '@/utils/math'
-import { getPlantTypeIcon } from '@/utils/plant'
+import { getPlantGrowthRateByRange, getPlantTypeIcon } from '@/utils/plant'
 import {
+  BiomeModel,
   getItemIdName,
   getPlantTypeName,
   ItemId,
   PLANT_TYPE_DATA,
   PlantModel,
   PlantType,
+  PlantGrowPeriod,
 } from '@ecology-mc/data'
 import { CircleQuestionMark, Search } from 'lucide-react'
 import { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import useBiomePlantFilterStore from '../useBiomePlantFilterStore'
 import PlantBarChart from './PlantBarChart'
 import PlantItem from './PlantItem'
+import {
+  HEIGHT_MIDDLE,
+  TEMPERATURE_RANGE_ALTITUDE,
+  TEMPERATURE_RANGE_DAY,
+} from '@/lib/constant'
+import { BiomePlantEnvironment } from './interface'
+import useBiomeSelectPlantStore from '../useBiomeSelectPlantStore'
 
-const PlantPane: FC = () => {
+export type PlantPaneProps = {
+  biomeModel: BiomeModel
+  altitude: number
+}
+
+const PlantPane: FC<PlantPaneProps> = (props) => {
+  const { biomeModel, altitude } = props
+
   const { t } = useTranslation()
   const { lang } = useLangStore()
   const [keyword, setKeyword] = useState('')
   const [suitOnly, setSuitOnly] = useState(false)
-
   const [togglePlantTypes, setTogglePlantTypes] = useState<PlantType[]>(
     PLANT_TYPE_DATA.filter((type) => type !== 'grass')
   )
 
-  const { temperature, rainfall } = useBiomePlantFilterStore()
+  const { selectedPlants, setSelectedPlants } = useBiomeSelectPlantStore()
 
   const allPlants = useMemo(() => PlantModel.getAll(), [])
 
+  /**
+   * 获取当前环境下可种植的作物
+   * 温度：基础温度，海拔，时间
+   * 降雨：基础降雨
+   */
   const [suitPlants, canPlants] = useMemo(() => {
-    return [
-      allPlants.filter(
-        (plant) =>
-          hasIntersectionRange(temperature, plant.temperatureRange.suit) &&
-          hasIntersectionRange(rainfall, plant.rainfallRange.suit)
-      ),
-      allPlants.filter(
-        (plant) =>
-          hasIntersectionRange(temperature, plant.temperatureRange.can) &&
-          hasIntersectionRange(rainfall, plant.rainfallRange.can)
-      ),
-    ]
-  }, [temperature, rainfall])
+    const getTemperatureRange = (type: PlantGrowPeriod): [number, number] => {
+      const basicTemperature =
+        biomeModel.temperature * 20 +
+        (HEIGHT_MIDDLE - altitude) * TEMPERATURE_RANGE_ALTITUDE
 
-  const plants = useMemo(() => {
+      if (type === 'sun') {
+        return [basicTemperature, basicTemperature + TEMPERATURE_RANGE_DAY]
+      } else if (type === 'moon') {
+        return [basicTemperature - TEMPERATURE_RANGE_DAY, basicTemperature]
+      } else {
+        return [
+          basicTemperature - TEMPERATURE_RANGE_DAY,
+          basicTemperature + TEMPERATURE_RANGE_DAY,
+        ]
+      }
+    }
+
+    return allPlants.reduce(
+      (acc, plant) => {
+        const temperatureRange = getTemperatureRange(
+          plant.defaultGrowInfo.period
+        )
+        const rainfallRange = [
+          biomeModel.rainfall * 100,
+          biomeModel.rainfall * 100,
+        ] as [number, number]
+        const growRate = getPlantGrowthRateByRange(plant, {
+          temperatureRange,
+          rainfallRange,
+        })
+        return [
+          hasIntersectionRange(temperatureRange, plant.temperatureRange.suit) &&
+          hasIntersectionRange(rainfallRange, plant.rainfallRange.suit)
+            ? [...acc[0], { plant, temperatureRange, rainfallRange, growRate }]
+            : acc[0],
+          hasIntersectionRange(
+            temperatureRange,
+            plant.temperatureRange.can,
+            false
+          ) &&
+          hasIntersectionRange(rainfallRange, plant.rainfallRange.can, false)
+            ? [...acc[1], { plant, temperatureRange, rainfallRange, growRate }]
+            : acc[1],
+        ]
+      },
+      [[], []] as [BiomePlantEnvironment[], BiomePlantEnvironment[]]
+    )
+  }, [biomeModel, altitude])
+
+  const plantsInfo = useMemo(() => {
     const allData = suitOnly ? suitPlants : canPlants
-    return allData.filter((plant) => {
-      if (!togglePlantTypes.includes(plant.type)) return false
-      const lootItems = plant.lootItems
+    return allData.filter((plantInfo) => {
+      if (!togglePlantTypes.includes(plantInfo.plant.type)) return false
+      const lootItems = plantInfo.plant.lootItems
       const itemId =
         lootItems.find((item) => !item.itemId.includes('seed'))?.itemId ||
         lootItems[0].itemId
@@ -138,10 +192,26 @@ const PlantPane: FC = () => {
             )
           )}
         </div>
-        <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
-          {plants.map((plant) => (
-            <PlantItem plantModel={plant} />
-          ))}
+        <div className="flex flex-1 flex-col overflow-x-hidden gap-1 overflow-y-auto">
+          {plantsInfo
+            .sort((a, b) => b.growRate - a.growRate)
+            .map((plantInfo) => (
+              <PlantItem
+                key={plantInfo.plant.seedId}
+                plantModel={plantInfo.plant}
+                temperatureRange={plantInfo.temperatureRange}
+                rainfallRange={plantInfo.rainfallRange}
+                className="cursor-pointer"
+                onClick={() => {
+                  const newPlants = selectedPlants.includes(plantInfo.plant)
+                    ? selectedPlants.filter(
+                        (plant) => plant !== plantInfo.plant
+                      )
+                    : [...selectedPlants, plantInfo.plant]
+                  setSelectedPlants(newPlants)
+                }}
+              />
+            ))}
         </div>
       </div>
     </div>

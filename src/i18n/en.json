@@ -25,6 +25,7 @@
     "condition": "condition",
     "filter": "filter",
     "temperature": "temperature",
+    "altitude": "altitude",
     "rainfall": "rainfall",
     "generate": "generate",
     "percentage": "percentage",
@@ -41,7 +42,13 @@
     "percent": "percent",
     "onFilterResult": "no filter result",
     "suit": "suit",
-    "can": "can"
+    "can": "can",
+    "unCounted": "unCounted",
+    "suitPlants": "suit plants",
+    "canPlants": "can plants",
+    "open": "open",
+    "close": "close",
+    "rain": "rain"
   },
   "data": {
     "biome": {
@@ -101,10 +108,22 @@
       "plantListTooltip": "Click Crop Classification - Enter the name to filter, click on the specific crop to view the planting information in the biome",
       "plantStatistics": "plant statistics",
       "plantStatisticsDescription": "The crops suitable and can be cultivated in this biome",
-      "availablePlantType": "number of different types of crops that can be cultivated"
+      "availablePlantType": "number of different types of crops that can be cultivated",
+      "altitudeInfluence": "altitude affects temperature, the higher the altitude, the lower the temperature, the opposite is true, each 1 block of altitude temperature changes 0.1 ℃\nwhen the altitude is 128, there is no effect, the default altitude is 64",
+      "temperatureTip": "temperature is affected by time, light, wind speed, altitude, etc.",
+      "rainfallTip": "rainfall will be affected by rainfall and land type lamp factors",
+      "generateTip": "the generate rate of the biome in overworld",
+      "biomePreviewChartTitle": "biome environment preview",
+      "biomePreviewChartDescription": "show the temperature information of the biome at different times, select the crop to view the corresponding growth rate",
+      "biomePreviewChartTimeType": {
+        "all": "whole day",
+        "day": "day",
+        "night": "night"
+      }
     },
     "plant": {
-      "name": "plant"
+      "name": "plant",
+      "growRate": "grow rate"
     },
     "item": {
       "name": "item"

@@ -23,7 +23,7 @@ const MobileHeader: FC = () => {
   const { component } = useSideDrawer()
 
   return (
-    <div className="bg-accent flex h-10 items-center justify-between border-b py-1">
+    <div className="flex h-10 items-center justify-between border-b py-1">
       {component ? (
         <Button variant="ghost" className="cursor-pointer">
           <PanelRightClose />

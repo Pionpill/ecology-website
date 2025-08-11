@@ -38,7 +38,7 @@ const BiomeHeader: FC = () => {
   const isDashboard = location.pathname.includes('dashboard')
 
   return (
-    <div className="flex items-center justify-between gap-2 p-2">
+    <div className="flex items-center bg-sidebar justify-between gap-2 p-2">
       <div className="flex items-center gap-1">
         <Button
           variant="ghost"

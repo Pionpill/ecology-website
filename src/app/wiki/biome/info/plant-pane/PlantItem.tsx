@@ -1,32 +1,44 @@
 import { Badge } from '@/components/ui/badge'
 import useLangStore from '@/hooks/useLangStore'
+import { cn } from '@/lib/utils'
 import {
-    getItemMaterialTypeInfo,
-    getItemPlantFamilyInfo,
-    getItemPlantTypeInfo,
-    getItemProduceInfo,
-    getItemTagInfo,
+  getItemMaterialTypeInfo,
+  getItemPlantFamilyInfo,
+  getItemPlantTypeInfo,
+  getItemProduceInfo,
+  getItemTagInfo,
 } from '@/utils/item'
-import { hasIntersectionRange } from '@/utils/math'
+import { formatFloatNumber } from '@/utils/math'
+import { getPlantGrowthRateByRange } from '@/utils/plant'
 import { getItemIdName, ItemId, ItemModel, PlantModel } from '@ecology-mc/data'
 import { Star } from 'lucide-react'
 import { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import useBiomePlantFilterStore from '../useBiomePlantFilterStore'
+import useBiomeSelectPlantStore from '../useBiomeSelectPlantStore'
 
 export type PlantItemProps = {
   plantModel: PlantModel
+  temperatureRange: [number, number]
+  rainfallRange: [number, number]
+  className?: string
+  onClick?: () => void
 }
 
 const PlantItem: FC<PlantItemProps> = (props) => {
-  const { plantModel } = props
+  const { plantModel, temperatureRange, rainfallRange, className, onClick } =
+    props
   const { lang } = useLangStore()
   const { t } = useTranslation()
-  const { temperature, rainfall } = useBiomePlantFilterStore()
+  const { selectedPlants } = useBiomeSelectPlantStore()
 
-  const isSuit =
-    hasIntersectionRange(temperature, plantModel.temperatureRange.suit) &&
-    hasIntersectionRange(rainfall, plantModel.rainfallRange.suit)
+  const growRate = useMemo(
+    () =>
+      getPlantGrowthRateByRange(plantModel, {
+        temperatureRange,
+        rainfallRange,
+      }),
+    [plantModel, temperatureRange, rainfallRange]
+  )
 
   const itemModel = useMemo(() => {
     try {
@@ -55,7 +67,12 @@ const PlantItem: FC<PlantItemProps> = (props) => {
   )
 
   return itemModel ? (
-    <div className="flex items-center gap-4 py-2">
+    <div
+      className={cn('flex items-center gap-4 p-1', {
+        "bg-accent rounded": selectedPlants.includes(plantModel)
+      } , className)}
+      onClick={onClick}
+    >
       {itemModel.image ? (
         <img
           width={40}
@@ -64,7 +81,7 @@ const PlantItem: FC<PlantItemProps> = (props) => {
           className="bg-accent rounded p-1"
         />
       ) : null}
-      <div className="flex w-full flex-col gap-0.5">
+      <div className="flex w-full flex-col gap-0.5 overflow-hidden">
         <div className="flex items-center justify-between">
           <div>{getItemIdName(itemModel.itemId, lang)}</div>
           <div className="flex items-center">
@@ -73,16 +90,26 @@ const PlantItem: FC<PlantItemProps> = (props) => {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex w-full items-center justify-between overflow-hidden">
           {itemTags ? (
-            <div className="text-muted-foreground text-sm">
+            <div
+              className="text-muted-foreground flex-1 truncate text-xs"
+              title={Object.values(itemTags)
+                .filter((item) => item)
+                .join(' / ')}
+            >
               {Object.values(itemTags)
                 .filter((item) => item)
                 .join(' / ')}
             </div>
           ) : null}
-          <Badge variant="outline">
-            {isSuit ? t('common.suit') : t('common.can')}
+          <Badge
+            variant="outline"
+            title={growRate === 1 ? t('common.suit') : t('wiki.plant.growRate')}
+          >
+            {growRate === 1
+              ? t('common.suit')
+              : `${formatFloatNumber(growRate * 100, 1)}%`}
           </Badge>
         </div>
       </div>

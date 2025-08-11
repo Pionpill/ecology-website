@@ -25,6 +25,7 @@
     "condition": "条件",
     "filter": "筛选",
     "temperature": "温度",
+    "altitude": "海拔",
     "rainfall": "湿度",
     "generate": "生成概率",
     "percentage": "占比",
@@ -41,7 +42,13 @@
     "percent": "占比",
     "onFilterResult": "没有过滤结果",
     "suit": "适宜",
-    "can": "可行"
+    "can": "可行",
+    "unCounted": "未统计",
+    "suitPlants": "适宜作物",
+    "canPlants": "可行作物",
+    "open": "开启",
+    "close": "关闭",
+    "rain": "下雨"
   },
   "data": {
     "biome": {
@@ -101,10 +108,22 @@
       "plantListTooltip": "点击作物分类/输入名称进行筛选，点击具体作物查看在生物群落中的种植信息",
       "plantStatistics": "作物统计",
       "plantStatisticsDescription": "在该生物群落中适宜与可种植的作物",
-      "availablePlantType": "不同类型可种植作物数量"
+      "availablePlantType": "不同类型可种植作物数量",
+      "altitudeInfluence": "海拔会影响温度，越高温度越低，反之越高\n每 1 格海拔温度变化 0.1 ℃\n海拔为 128 时无影响，默认海拔 64",
+      "temperatureTip": "温度会受时间，光照，风速，海拔等因素影响",
+      "rainfallTip": "湿度会受到降雨，土地类型灯因素影响",
+      "generateTip": "该群落在主世界的生成概率",
+      "biomePreviewChartTitle": "群落环境预览",
+      "biomePreviewChartDescription": "展示不同时间群落的温度信息，选择作物可查看对应的生长速率",
+      "biomePreviewChartTimeType": {
+        "all": "全天",
+        "day": "白天",
+        "night": "夜晚"
+      }
     },
     "plant": {
-      "name": "作物"
+      "name": "作物",
+      "growRate": "生长速率"
     },
     "item": {
       "name": "物品"

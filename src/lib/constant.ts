@@ -4,7 +4,7 @@ export const TEMPERATURE_ADJUST_FRAME = 1000
 /** 温度调整值-风 */
 export const TEMPERATURE_ADJUST_WIND = 2
 /** 温度调整值-时间 */
-export const TEMPERATURE_RANGE_DAY = 10
+export const TEMPERATURE_RANGE_DAY = 5
 /** 温度调整值-海拔 */
 export const TEMPERATURE_RANGE_ALTITUDE = 0.1
 /** 海拔-中间 */
@@ -15,5 +15,7 @@ export const HEIGHT_DEFAULT = 64
 export const RAINFALL_RAIN = 0.8
 /** 时间-温度偏移帧 */
 export const FRAME_TEMPERATURE_OFFSET = 1000
+/** 时间-对应真实时间偏移帧 */
+export const FRAME_REAL_TIME_OFFSET = -6000
 /** 时间-全天帧数 */
 export const FRAME_DAY = 24000

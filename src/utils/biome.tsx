@@ -1,3 +1,9 @@
+import {
+  FRAME_DAY,
+  FRAME_REAL_TIME_OFFSET,
+  FRAME_TEMPERATURE_OFFSET,
+  TEMPERATURE_RANGE_DAY,
+} from '@/lib/constant'
 import { BiomeCategory, Dimension } from '@ecology-mc/data'
 import {
   Cloud,
@@ -33,9 +39,9 @@ export const getTemperatureIcon = (
   size?: string | number
 ) =>
   temperature > 1 ? (
-    <ThermometerSun size={size} />
+    <ThermometerSun size={size} className="text-red-500" />
   ) : temperature < 0 ? (
-    <ThermometerSnowflake size={size} />
+    <ThermometerSnowflake size={size} className="text-blue-500" />
   ) : (
     <Thermometer size={size} />
   )
@@ -82,4 +88,12 @@ export const getBiomeDimensionIcon = (
     default:
       return <Skull size={size} />
   }
+}
+
+/** 获取一天中某帧得温度偏移值 */
+export const getAdjustTemperatureOfDay = (frame: number) => {
+  const sinValue = Math.sin(
+    2 * Math.PI * ((frame + FRAME_TEMPERATURE_OFFSET + FRAME_REAL_TIME_OFFSET) / FRAME_DAY)
+  )
+  return sinValue * TEMPERATURE_RANGE_DAY
 }

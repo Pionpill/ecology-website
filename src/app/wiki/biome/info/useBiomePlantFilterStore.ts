@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type BiomePlantFilterStore = {
+export type BiomePlantFilterStates = {
   temperature: [number, number]
   rainfall: [number, number]
 }
@@ -12,7 +12,7 @@ export type BiomePlantFilterActions = {
 
 /** 生物群落作物过滤器 */
 const useBiomePlantFilterStore = create<
-  BiomePlantFilterStore & BiomePlantFilterActions
+  BiomePlantFilterStates & BiomePlantFilterActions
 >((set) => ({
   temperature: [0, 0],
   rainfall: [0, 0],
