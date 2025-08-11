@@ -39,27 +39,29 @@ const BiomeSidebar: FC = () => {
 
   const handleCategoryClick = (node: ListNode) => {
     const isGroup = 'children' in node
+    const category = node.key.split(':')[0] as BiomeCategory
     if (isGroup) {
-      setBiomeFilter({ category: [node.key as BiomeCategory] }, true)
-      navigate(`/wiki/biome/dashboard?category=${node.key}`)
+      setBiomeFilter({ category: [category] }, true)
+      navigate(`/wiki/biome/dashboard?category=${category}`)
     } else {
-      navigate(`/wiki/biome/${node.key}`)
+      navigate(`/wiki/biome/${category}`)
     }
   }
 
   const handleTagClick = (node: ListNode) => {
     const isGroup = 'children' in node
+    const tag = node.key.split(':')[0] as BiomeTag
     if (isGroup) {
-      setBiomeFilter({ tags: [node.key as BiomeTag] }, true)
-      navigate(`/wiki/biome/dashboard?tag=${node.key}`)
+      setBiomeFilter({ tags: [tag] }, true)
+      navigate(`/wiki/biome/dashboard?tag=${tag}`)
     } else {
-      navigate(`/wiki/biome/${node.key}`)
+      navigate(`/wiki/biome/${tag}`)
     }
   }
 
   return (
     <div
-      className={cn('overflow-hidden transition-all duration-500 bg-sidebar', {
+      className={cn('bg-sidebar overflow-hidden transition-all duration-500', {
         'w-56': open,
         'w-0': !open,
       })}
@@ -102,7 +104,9 @@ const BiomeSidebar: FC = () => {
           >
             <LineTabsList>
               {tabs.map((tab) => (
-                <LineTabsTrigger key={tab.value} value={tab.value}>{tab.label}</LineTabsTrigger>
+                <LineTabsTrigger key={tab.value} value={tab.value}>
+                  {tab.label}
+                </LineTabsTrigger>
               ))}
             </LineTabsList>
             <TabsContent value="category" className="flex-1 overflow-auto">
@@ -122,7 +126,7 @@ const BiomeSidebar: FC = () => {
           </Tabs>
         </div>
         <Separator />
-        <div className={"text-ring max-h-[80px] overflow-hidden text-xs"}>
+        <div className={'text-ring max-h-[80px] overflow-hidden text-xs'}>
           {t('wiki.biome.usage')}
         </div>
       </div>
