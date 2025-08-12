@@ -20,7 +20,12 @@ import { useNavigate } from 'react-router'
 import useSidebarStore from '../useSidebarStore'
 import { cn } from '@/lib/utils'
 
-const BiomeSidebar: FC = () => {
+export type BiomeSidebarProps = {
+  className?: string
+}
+
+const BiomeSidebar: FC<BiomeSidebarProps> = (props) => {
+  const { className } = props
   const { t } = useTranslation()
   const { lang } = useLangStore()
 
@@ -61,10 +66,14 @@ const BiomeSidebar: FC = () => {
 
   return (
     <div
-      className={cn('bg-sidebar overflow-hidden transition-all duration-500', {
-        'w-56': open,
-        'w-0': !open,
-      })}
+      className={cn(
+        'bg-sidebar overflow-hidden transition-all duration-500',
+        {
+          'w-56': open,
+          'w-0': !open,
+        },
+        className
+      )}
     >
       <div
         className={cn(

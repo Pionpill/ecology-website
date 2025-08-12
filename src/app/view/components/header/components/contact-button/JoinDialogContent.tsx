@@ -45,6 +45,7 @@ const JoinDialogContext: FC = () => {
           </div>
           <div className="flex items-center gap-2">
             <Button
+              variant="secondary"
               className="h-6 cursor-pointer px-2"
               onClick={() =>
                 window.open(

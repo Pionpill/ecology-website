@@ -2,11 +2,11 @@ import QQ from '@/components/icon/QQ'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuLabel,
-    DropdownMenuTrigger
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import useSideDrawer from '@/hooks/useSideDrawer'
 import { cn } from '@/lib/utils'
@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next'
 import JoinDialogContext from './components/contact-button/JoinDialogContent'
 import LangButton from './components/LangButton'
 import ThemeButton from './components/ThemeButton'
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
 
 const MobileHeader: FC = () => {
   const { t } = useTranslation()
@@ -25,9 +26,16 @@ const MobileHeader: FC = () => {
   return (
     <div className="flex h-10 items-center justify-between border-b py-1">
       {component ? (
-        <Button variant="ghost" className="cursor-pointer">
-          <PanelRightClose />
-        </Button>
+        <Drawer direction="left">
+          <DrawerTrigger asChild>
+            <Button variant="ghost" className="cursor-pointer">
+              <PanelRightClose />
+            </Button>
+          </DrawerTrigger>
+          <DrawerContent>
+            {component}
+          </DrawerContent>
+        </Drawer>
       ) : null}
       <img
         src={getCosImageUrl('ecology/imgs/ecology.png')}
@@ -42,12 +50,12 @@ const MobileHeader: FC = () => {
               <SquareMenu />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-58" align="start">
+          <DropdownMenuContent align="start">
             <DropdownMenuLabel className="font-semibold uppercase">
               {t('header.navigationMenu')}
             </DropdownMenuLabel>
             <DropdownMenuGroup>
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-col items-start gap-2">
                 <ThemeButton className="w-auto px-2">
                   <p>{t('header.theme')}</p>
                 </ThemeButton>
@@ -55,7 +63,10 @@ const MobileHeader: FC = () => {
                   <p>{t('header.lang')}</p>
                 </LangButton>
                 <DialogTrigger asChild>
-                  <Button variant="ghost" className="hover:cursor-pointer h-8 pl-2!">
+                  <Button
+                    variant="ghost"
+                    className="h-8 pl-2! hover:cursor-pointer"
+                  >
                     <QQ className="fill-none" />
                     {t('header.contact.joinUs')}
                   </Button>
@@ -63,7 +74,7 @@ const MobileHeader: FC = () => {
                 <DialogTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="hover:cursor-pointer h-8 pl-2!"
+                    className="h-8 pl-2! hover:cursor-pointer"
                     onClick={() =>
                       window.open('https://github.com/Pionpill/ecology-website')
                     }

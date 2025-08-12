@@ -57,7 +57,7 @@ const BiomeDashboard: FC = () => {
       <Tabs
         value={mode}
         onValueChange={(newMode) => setMode(newMode as BiomeDashboardMode)}
-        className="flex flex-row items-start justify-between p-2"
+        className="flex flex-wrap flex-row items-start justify-between p-2"
       >
         <div className="flex items-center">
           <TabsList>

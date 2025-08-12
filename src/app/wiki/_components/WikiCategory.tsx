@@ -42,7 +42,7 @@ const WikiCategory: FC = () => {
   )
 
   return (
-    <div className="flex h-full w-14 flex-col items-center gap-1 py-4 border-r">
+    <div className="flex h-full min-w-14 flex-col items-center gap-1 py-4 border-r">
       {sideItems.map((item) => (
         <Tooltip key={item.path}>
           <TooltipTrigger asChild>

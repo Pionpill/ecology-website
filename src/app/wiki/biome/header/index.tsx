@@ -21,12 +21,14 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router'
 import useBiomeFilterStore from '../useBiomeFilterStore'
 import useSidebarStore from '../useSidebarStore'
+import useDeviceStore from '@/hooks/useDeviceStore'
 
 const BiomeHeader: FC = () => {
   const location = useLocation()
   const [searchParams] = useSearchParams()
   const { t } = useTranslation()
   const { lang } = useLangStore()
+  const { device } = useDeviceStore()
 
   const { open, setOpen } = useSidebarStore()
   const { setBiomeFilter } = useBiomeFilterStore()
@@ -38,16 +40,24 @@ const BiomeHeader: FC = () => {
   const isDashboard = location.pathname.includes('dashboard')
 
   return (
-    <div className="flex items-center bg-sidebar justify-between gap-2 p-2">
+    <div className="bg-sidebar flex items-center justify-between gap-2 p-2">
       <div className="flex items-center gap-1">
-        <Button
-          variant="ghost"
-          className="size-6 cursor-pointer"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <PanelRightOpen /> : <PanelLeftOpen />}
-        </Button>
-        <Separator orientation="vertical" className="mr-1 !h-4 !w-[1.5px]" />
+        {device === 'PC' ? (
+          <>
+            <Button
+              variant="ghost"
+              className="size-6 cursor-pointer"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <PanelRightOpen /> : <PanelLeftOpen />}
+            </Button>
+            <Separator
+              orientation="vertical"
+              className="mr-1 !h-4 !w-[1.5px]"
+            />
+          </>
+        ) : null}
+
         <Breadcrumb className="flex gap-1">
           {isDashboard ? (
             <>
