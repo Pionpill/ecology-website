@@ -19,8 +19,8 @@ import { Link as LinkIcon, PanelLeftOpen, PanelRightOpen } from 'lucide-react'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router'
-import useBiomeFilterStore from '../useBiomeFilterStore'
-import useSidebarStore from '../useSidebarStore'
+import useBiomeFilterStore from '../../useBiomeFilterStore'
+import useSidebarStore from '../../useSidebarStore'
 import useDeviceStore from '@/hooks/useDeviceStore'
 
 const BiomeHeader: FC = () => {

@@ -15,9 +15,9 @@ import {
 } from '@/components/ui/tooltip'
 import { Separator } from '@/components/ui/separator'
 import { BiomeCategory, BiomeTag } from '@ecology-mc/data'
-import useBiomeFilterStore from '../useBiomeFilterStore'
+import useBiomeFilterStore from '../../useBiomeFilterStore'
 import { useNavigate } from 'react-router'
-import useSidebarStore from '../useSidebarStore'
+import useSidebarStore from '../../useSidebarStore'
 import { cn } from '@/lib/utils'
 
 export type BiomeSidebarProps = {
