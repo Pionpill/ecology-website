@@ -16,11 +16,10 @@ import { cn } from '@/lib/utils'
 import { getTemperatureIcon } from '@/utils/biome'
 import { formatFloatNumber } from '@/utils/math'
 import {
-  BiomeModel,
   getBiomeName,
   getItemIdName,
   ItemId,
-  ItemModel
+  ItemModel,
 } from '@ecology-mc/data'
 import { Toggle } from '@radix-ui/react-toggle'
 import { schemeCategory10 } from 'd3-scale-chromatic'
@@ -36,20 +35,21 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
+import useBiomeContext from '../useBiomeContext'
 import useBiomeSelectPlantStore from '../useBiomeSelectPlantStore'
 import useChartData from './useChartData'
 
 export type BiomePreviewChartProps = {
   className?: string
-  biomeModel: BiomeModel
   altitude: number
 }
 
 const BiomePreviewChart: FC<BiomePreviewChartProps> = (props) => {
-  const { biomeModel, altitude, className } = props
+  const { altitude, className } = props
   const { t } = useTranslation()
   const { lang } = useLangStore()
   const { selectedPlants } = useBiomeSelectPlantStore()
+  const { biomeModel } = useBiomeContext()
 
   const selectedPlantsInfo = useMemo(
     () =>
@@ -95,10 +95,13 @@ const BiomePreviewChart: FC<BiomePreviewChartProps> = (props) => {
 
   return (
     <Card
-      className={cn('bg-muted-secondary border-none shadow-none', className)}
+      className={cn(
+        'border-none shadow-none bg-muted-secondary',
+        className
+      )}
     >
       <div className="flex">
-        <CardHeader className="w-full">
+        <CardHeader className="w-full px-4">
           <CardTitle>{t('wiki.biome.biomePreviewChartTitle')}</CardTitle>
           <CardDescription>
             {t('wiki.biome.biomePreviewChartDescription')}
@@ -224,7 +227,7 @@ const BiomePreviewChart: FC<BiomePreviewChartProps> = (props) => {
             yAxisId="temperature"
             type="number"
             tickLine={false}
-            tickMargin={10}
+            tickMargin={5}
             axisLine={false}
             tickFormatter={(value) => `${value}℃`}
           />

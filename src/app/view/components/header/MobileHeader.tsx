@@ -32,9 +32,7 @@ const MobileHeader: FC = () => {
               <PanelRightClose />
             </Button>
           </DrawerTrigger>
-          <DrawerContent>
-            {component}
-          </DrawerContent>
+          <DrawerContent>{component}</DrawerContent>
         </Drawer>
       ) : null}
       <img

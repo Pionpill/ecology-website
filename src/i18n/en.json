@@ -119,6 +119,10 @@
         "all": "whole day",
         "day": "day",
         "night": "night"
+      },
+      "plantPaneTab": {
+        "list": "plant selection",
+        "chart": "chart overview"
       }
     },
     "plant": {

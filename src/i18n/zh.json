@@ -119,6 +119,10 @@
         "all": "全天",
         "day": "白天",
         "night": "夜晚"
+      },
+      "plantPaneTab": {
+        "list": "作物选择",
+        "chart": "图形总览"
       }
     },
     "plant": {
