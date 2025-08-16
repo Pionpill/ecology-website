@@ -6,7 +6,7 @@ import BiomeDashboard from './app/wiki/biome/dashboard'
 import BiomeInfo from './app/wiki/biome/info'
 
 const AppRoute: FC = () => (
-  <BrowserRouter basename="/ecology">
+  <BrowserRouter basename="/ecology-website">
     <Routes>
       <Route path="/" element={<View />}>
         <Route index element={<Navigate to="wiki" />} />
