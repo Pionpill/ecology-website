@@ -52,7 +52,7 @@ const BiomeLineChart: FC<BiomeLineChartProps> = (props) => {
   }, [data])
 
   return (
-    <Card className={cn("w-auto border-none shadow-none", className)}>
+    <Card className={cn('w-auto border-none shadow-none', className)}>
       <CardHeader>
         <CardTitle className="uppercase">
           {type === 'temperature'
@@ -66,7 +66,10 @@ const BiomeLineChart: FC<BiomeLineChartProps> = (props) => {
         </CardDescription>
       </CardHeader>
       <CardContent className="p-0">
-        <ChartContainer config={chartConfig} className={cn('w-full', containerClassName)}>
+        <ChartContainer
+          config={chartConfig}
+          className={cn('w-full', containerClassName)}
+        >
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -84,7 +87,15 @@ const BiomeLineChart: FC<BiomeLineChartProps> = (props) => {
               orientation="left"
             />
             <ChartTooltip
-              content={<ChartTooltipContent indicator="line" />}
+              content={
+                <ChartTooltipContent
+                  indicator="line"
+                  active={false}
+                  payload={[]}
+                  coordinate={{ x: 0, y: 0 }}
+                  accessibilityLayer={false}
+                />
+              }
               formatter={(value, name, item) => (
                 <div className="flex flex-col gap-2">
                   <span className="font-semibold">{item.payload.name}</span>

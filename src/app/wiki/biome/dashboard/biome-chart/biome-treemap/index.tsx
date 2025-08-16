@@ -98,7 +98,15 @@ const BiomeTreeChart: FC<BiomeChartProps> = (props) => {
             content={(props) => <TreeMapContent {...props} />}
           >
             <ChartTooltip
-              content={<ChartTooltipContent indicator="line" />}
+              content={
+                <ChartTooltipContent
+                  indicator="line"
+                  active={false}
+                  payload={[]}
+                  coordinate={{ x: 0, y: 0 }}
+                  accessibilityLayer={false}
+                />
+              }
               formatter={(value, _, item) => (
                 <div className="flex flex-col gap-2">
                   <span className="font-semibold">{item.payload.name}</span>

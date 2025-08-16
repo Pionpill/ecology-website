@@ -137,6 +137,10 @@ const PlantBarChartInner: FC<PlantBarChartProps> = (props) => {
                     {getPlantTypeName(label as PlantType, lang)}
                   </span>
                 )}
+                active={false}
+                payload={[]}
+                coordinate={{ x: 0, y: 0 }}
+                accessibilityLayer={false}
               />
             }
             formatter={(value, name, item) => {
@@ -182,6 +186,6 @@ const PlantBarChartInner: FC<PlantBarChartProps> = (props) => {
   )
 }
 
-const PlantBarChart = memo(PlantBarChartInner);
+const PlantBarChart = memo(PlantBarChartInner)
 
 export default PlantBarChart
