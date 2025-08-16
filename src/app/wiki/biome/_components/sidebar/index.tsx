@@ -43,24 +43,24 @@ const BiomeSidebar: FC<BiomeSidebarProps> = (props) => {
   const navigate = useNavigate()
 
   const handleCategoryClick = (node: ListNode) => {
-    const isGroup = 'children' in GainNode
+    const isGroup = 'children' in node
+    const category = node.key.split('-')[0] as BiomeCategory
     if (isGroup) {
-      const category = node.key.split(':')[0] as BiomeCategory
       setBiomeFilter({ category: [category] }, true)
       navigate(`/wiki/biome/dashboard?category=${category}`)
     } else {
-      navigate(`/wiki/biome/${node.key}`)
+      navigate(`/wiki/biome/${category}`)
     }
   }
 
   const handleTagClick = (node: ListNode) => {
     const isGroup = 'children' in node
+    const tag = node.key.split('-')[0] as BiomeTag
     if (isGroup) {
-      const tag = node.key.split(':')[0] as BiomeTag
       setBiomeFilter({ tags: [tag] }, true)
       navigate(`/wiki/biome/dashboard?tag=${tag}`)
     } else {
-      navigate(`/wiki/biome/${node.key}`)
+      navigate(`/wiki/biome/${tag}`)
     }
   }
 

@@ -18,7 +18,7 @@ const useBiomeCategoryList = () => {
         return {
           label,
           category,
-          key: `${category}:${lang}`,
+          key: `${category}-${lang}`,
           icon: getBiomeCatalogIcon(category),
           children: BiomeModel.getByFilter({ category }).map((biome) => ({
             label: getBiomeName(biome.biomeId, lang),
