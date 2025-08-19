@@ -31,7 +31,6 @@ const Biome: FC = () => {
           <BiomeSidebar />
         </>
       ) : null}
-
       <div className="flex flex-1 flex-col overflow-auto">
         <BiomeHeader />
         <Separator />
