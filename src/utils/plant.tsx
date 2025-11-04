@@ -102,3 +102,8 @@ export const calculateAbleTickRatio = (
   if (value < suit[0]) return (value - can[0]) / (suit[0] - can[0])
   return (can[1] - value) / (can[1] - suit[1])
 }
+
+export const getPlantMainLootItem = (plant: PlantModel) => {
+  const fruit = plant.lootItems.find(item => !item.itemId.includes('seed'));
+  return fruit || plant.lootItems[0]
+}

@@ -83,6 +83,7 @@
     "project": "项目"
   },
   "wiki": {
+    "sidebarTip": "选择分组显示仪表板，展开分组选择项目展示对应详情",
     "biome": {
       "name": "群落",
       "title": "生态群落",
@@ -90,7 +91,6 @@
       "tag": "标签",
       "description": "生物群系（Biome）是Minecraft世界中形态各异的地区，有着多样的地理特征、植物群、海拔高度、温度、湿度及天空、水域和植被颜色。生物群系将生成的世界划分为一个个不同的自然环境，譬如森林、丛林、沙漠和针叶林。",
       "descriptionClick": "点击跳转到官方 wiki 页面",
-      "usage": "点击上方分类/标签显示对应的群落合集，点击群落显示群落信息",
       "biomeFilterPanel": "群落条件筛选面板",
       "biomeFilterPanelDescription": "选择对应的筛选条件，退出面板后将展示符合条件的群落",
       "chooseFilter": "选择筛选条件",
@@ -127,7 +127,10 @@
     },
     "plant": {
       "name": "作物",
-      "growRate": "生长速率"
+      "title": "种植作物",
+      "growRate": "生长速率",
+      "description": "作物是指种植在土地(特殊的方块)上，满足一定条件后生长并最终可收获的方块，模组作物的种植与生长方式更为丰富。",
+      "descriptionClick": "点击跳转到官方 wiki 小麦界面"
     },
     "item": {
       "name": "物品"

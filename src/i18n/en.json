@@ -83,6 +83,7 @@
     "project": "project"
   },
   "wiki": {
+    "sidebarTip": "Select the group to display the dashboard, expand the group to select the project to display the corresponding details",
     "biome": {
       "name": "biome",
       "title": "ecology biome",
@@ -90,7 +91,6 @@
       "tag": "tag",
       "description": "A biome is a region in a world with distinct geographical features, flora, temperatures, humidities, and sky, water, fog, grass and foliage colors. Biomes separate every generated world into different environments, such as forests, deserts and taigas.",
       "descriptionClick": "click to jump to the official wiki page",
-      "usage": "Click the category/tag above to display the corresponding collection, click the biome to display biome information",
       "biomeFilterPanel": "biome filter panel",
       "biomeFilterPanelDescription": "Select the corresponding filter condition, and the biome that matches the condition will be displayed after exiting the panel",
       "chooseFilter": "choose filter condition",
@@ -127,7 +127,10 @@
     },
     "plant": {
       "name": "plant",
-      "growRate": "grow rate"
+      "title": "plants",
+      "growRate": "grow rate",
+      "description":"A biome is a region in a world with distinct geographical features, flora, temperatures, humidities, and sky, water, fog, grass and foliage colors. Biomes separate every generated world into different environments, such as forests, deserts and taigas.",
+      "descriptionClick": "click to jump to the official wiki page"
     },
     "item": {
       "name": "item"
