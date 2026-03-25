@@ -6,6 +6,7 @@ import I18nProvider from './I18nProvider'
 import useLangStore from './hooks/useLangStore'
 import useThemeStore from './hooks/useThemeStore'
 import useDeviceStore, { getDeviceType } from './hooks/useDeviceStore'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Root: FC = () => {
@@ -32,9 +33,11 @@ const Root: FC = () => {
 
   return (
     <StrictMode>
-      <I18nProvider>
-        <AppRoute />
-      </I18nProvider>
+      <ErrorBoundary>
+        <I18nProvider>
+          <AppRoute />
+        </I18nProvider>
+      </ErrorBoundary>
     </StrictMode>
   )
 }
